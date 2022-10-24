@@ -44,7 +44,7 @@ $(function () {
 function uploadData (formdata) {
 
   $.ajax({
-    url: '/upload/new/',
+    url: '/api/v1/upload/new/',
     type: 'post',
     data: formdata,
     contentType: false,
