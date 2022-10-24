@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  Drag-And-Drop:
+    image: niewidzialny84/draganddrop
+    ports:
+      - 8000:80
+    volumes: 
+      - ./shared:/shared
+      - ./upload:/static/upload/
+
+#For use with reverse proxy
+networks:
+  default:
+    external:
+      name: caddy
