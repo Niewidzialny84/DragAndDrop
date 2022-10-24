@@ -5,6 +5,7 @@ RUN apk update && \
         apk add libxml2-dev && \
         apk add libxslt-dev && \
         apk add libffi-dev && \
+        apk add jpeg-dev zlib-dev libjpeg && \
         apk add make
 COPY requirements.txt .
 RUN python -m pip install --upgrade pip
