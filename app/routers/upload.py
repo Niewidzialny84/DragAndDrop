@@ -57,8 +57,9 @@ async def post_upload(imgdata: tuple, file: UploadFile = File(...)):
         size = myfile.tell()
 
         if size < 8000000:
-            send_webhook(str(img_full_path), str(file_name))
-
+            send_webhook(file_path=str(img_full_path), filename=str(file_name))
+        else:
+            send_webhook(file_path=str(img_full_path), filename=None)
     
     data = {
         "img_path": img_full_path,
