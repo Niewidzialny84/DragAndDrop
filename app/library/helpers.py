@@ -3,7 +3,7 @@ import uuid
 from pathlib import Path
 import markdown
 from ..config import settings
-from .settings import DISCORD_WEBHOOK
+from .settings import DISCORD_WEBHOOK, DOMAIN
 
 from discord_webhook import DiscordWebhook,  DiscordEmbed
 
@@ -42,7 +42,9 @@ def send_webhook(file_path: str, filename: str = None, title: str="File was uplo
         with open(file_path, "rb") as f:
             webhook.add_file(file=f.read(), filename=filename)
 
-    embed = DiscordEmbed(title=title, description=file_path, color='03b2f8')
+    url = DOMAIN + "/" + file_path
+
+    embed = DiscordEmbed(title=title, description=url, color='03b2f8')
 
     webhook.add_embed(embed)
     response = webhook.execute()
