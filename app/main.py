@@ -18,8 +18,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(upload.router)
 
-@app.get("/", response_class=RedirectResponse)
-async def home(request: Request):
+#@app.get("/", response_class=RedirectResponse)
+#async def home(request: Request):
     #data = openfile("home.md")
     #return templates.TemplateResponse("page.html", {"request": request, "data": data})
-    response = RedirectResponse(app.url_path_for(name='get_upload'))
+    #response = RedirectResponse(app.url_path_for(name='get_upload'))

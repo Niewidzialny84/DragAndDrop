@@ -7,7 +7,7 @@ from ..library.settings import LOGIN, PASSWORD
 
 import secrets
 
-router = APIRouter(prefix='/api/v1')
+router = APIRouter()
 
 security = HTTPBasic()
 
@@ -33,12 +33,12 @@ def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
     return credentials.username
 
 
-@router.get("/upload", response_class=HTMLResponse, dependencies=[Depends(get_current_username)])
+@router.get("/", response_class=HTMLResponse, dependencies=[Depends(get_current_username)])
 def get_upload(request: Request):
     return templates.TemplateResponse('upload.html', context={'request': request})
 
 
-@router.post("/upload/new/", dependencies=[Depends(get_current_username)])
+@router.post("/new/", dependencies=[Depends(get_current_username)])
 async def post_upload(imgdata: tuple, file: UploadFile = File(...)):
     print(imgdata)
 
