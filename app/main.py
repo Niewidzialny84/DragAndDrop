@@ -22,5 +22,4 @@ app.include_router(upload.router)
 async def home(request: Request):
     #data = openfile("home.md")
     #return templates.TemplateResponse("page.html", {"request": request, "data": data})
-    app.
     response = RedirectResponse(app.url_path_for(name='upload'))
